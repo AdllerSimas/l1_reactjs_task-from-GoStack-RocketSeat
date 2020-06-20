@@ -27,7 +27,6 @@ function App() {
     const response = await api.post('/repositories', {
       
       title: `New Repository ${Date.now()}`,
-      owner: "Me",
       url:"https://findRepositories",
       techs:['nodejs', 'reactjs']
     })
@@ -40,16 +39,12 @@ function App() {
 
   async function handleRemoveRepository(id) {
     
-    api.delete(`/repositories/${id}`).then( response => {
+    await api.delete(`/repositories/${id}`)
         
-        api.get('/repositories').then(response => {
-          setRepositories(response.data)
-        })  
+    const newRepository = repositories.filter(repository => repository.id !== id)
     
-    }).catch(err => {
-      console.log(err)
-    })
-    
+    setRepositories(newRepository)
+         
   }
 
   return (
