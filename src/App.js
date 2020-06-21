@@ -14,11 +14,11 @@ function App() {
     })
   },[])
 
-  useEffect( () => {
-    api.get(`/repositories`).then( resp => {
-      setRepositories(resp.data)
-    })
-  },[repositories])
+  // useEffect( () => {
+  //   api.get(`/repositories`).then( resp => {
+  //     setRepositories(resp.data)
+  //   })
+  // },[repositories])
 
   
   
